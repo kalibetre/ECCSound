@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="702.0" prefWidth="697.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.eccsound.controller.MainController">
+   <Label layoutX="14.0" layoutY="11.0" text="Welcome to ECC Sound App" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="11.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <VBox layoutX="8.0" layoutY="46.0" prefHeight="656.0" prefWidth="683.0" spacing="15.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="46.0">
+      <AnchorPane maxHeight="300.0" prefHeight="300.0" prefWidth="683.0" style="-fx-background-color: #bf5272;">
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+         <HBox prefHeight="215.0" prefWidth="679.0" spacing="20.0" style="-fx-background-color: fff3e5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+            <VBox prefHeight="233.0" prefWidth="463.0" spacing="15.0" HBox.hgrow="ALWAYS">
+               <Label text="Your Primary Key - KEEP SAFE!!" />
+               <TextArea fx:id="primaryKeyTextArea" editable="false" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="463.0" wrapText="true" />
+               <Label text="Your Public Key - SHARABLE" />
+               <TextArea fx:id="publicKeyTextArea" editable="false" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="463.0" wrapText="true" />
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" HBox.hgrow="ALWAYS" />
+            <VBox alignment="TOP_CENTER" maxWidth="145.0" minWidth="145.0" prefHeight="215.0" prefWidth="145.0" spacing="15.0">
+               <Button fx:id="generateKeysBtn" mnemonicParsing="false" onAction="#generateKeys" prefHeight="26.0" prefWidth="150.0" text="Generate Keys">
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </Button>
+               <Button fx:id="loadKeysBtn" mnemonicParsing="false" onAction="#loadKeys" prefHeight="26.0" prefWidth="150.0" text="Load Keys" />
+               <Button fx:id="saveKeysBtn" mnemonicParsing="false" onAction="#saveKeys" prefHeight="26.0" prefWidth="150.0" text="Save Keys" />
+               <Button fx:id="clearKeysBtn" mnemonicParsing="false" onAction="#clearKeys" prefHeight="26.0" prefWidth="150.0" text="Clear Keys" />
+            </VBox>
+         </HBox>
+      </AnchorPane>
+      <AnchorPane prefHeight="150.0" prefWidth="683.0" style="-fx-background-color: #00728b;">
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <VBox layoutX="17.0" layoutY="17.0" prefHeight="215.0" prefWidth="679.0" spacing="15.0" style="-fx-background-color: #ccf9ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+            <AnchorPane VBox.vgrow="ALWAYS">
+               <children>
+                  <Label layoutY="5.0" text="Receiver's Public Key" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                  <Separator layoutX="132.0" layoutY="12.0" opacity="0.0" prefWidth="200.0" />
+                  <Label fx:id="receiverPubKeyStatus" layoutX="437.0" layoutY="5.0" text="NOT SET" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="5.0" />
+                  <Button fx:id="setReceiverPublicKeyBtn" layoutX="504.0" mnemonicParsing="false" onAction="#setReceiverPublicKey" prefHeight="26.0" prefWidth="145.0" text="Set" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <TextArea fx:id="receiverPublicKeyTextArea" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="645.0" wrapText="true" />
+         </VBox>
+      </AnchorPane>
+      <TabPane minHeight="153.0" prefHeight="153.0" prefWidth="683.0" style="-fx-background-color: #646464;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <opaqueInsets>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+         <Tab text=" File">
+            <AnchorPane prefWidth="679.0" style="-fx-background-color: #fff;">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <VBox layoutX="30.0" layoutY="30.0" prefHeight="65.0" prefWidth="649.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label text="File Path" />
+                  <HBox prefHeight="33.0" prefWidth="539.0" spacing="15.0">
+                     <TextField fx:id="filePathTextArea" editable="false" HBox.hgrow="ALWAYS" />
+                     <Button fx:id="chooseFileBtn" maxWidth="145.0" minWidth="145.0" mnemonicParsing="false" onAction="#chooseFile" prefWidth="145.0" text="Choose File" />
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                     <Button fx:id="encryptFileBtn" mnemonicParsing="false" onAction="#encryptFile" prefHeight="26.0" prefWidth="145.0" text="Encrypt" />
+                     <Button fx:id="decryptFileBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#decryptFile" prefHeight="26.0" prefWidth="145.0" text="Decrypt" />
+                  </HBox>
+               </VBox>
+            </AnchorPane>
+         </Tab>
+         <Tab text="Voice Recording">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <HBox layoutX="319.0" layoutY="34.0" spacing="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="34.0">
+                  <children>
+                     <Button fx:id="startRecordingBtn" mnemonicParsing="false" onAction="#startRecording" prefHeight="26.0" prefWidth="110.0" text="Start" />
+                     <Button fx:id="stopRecordingBtn" mnemonicParsing="false" onAction="#stopRecording" prefHeight="26.0" prefWidth="110.0" text="Stop" />
+                     <Button fx:id="saveEncryptedBtn" mnemonicParsing="false" onAction="#saveEncryptedRecording" prefHeight="26.0" prefWidth="110.0" text="Save Encrypted" />
+                  </children>
+               </HBox>
+               <Label fx:id="recordTimeLabel" layoutX="34.0" layoutY="23.0" text="00:00" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="23.0">
+                  <font>
+                     <Font size="39.0" />
+                  </font>
+               </Label>
+            </AnchorPane>
+         </Tab>
+      </TabPane>
+      <HBox nodeOrientation="RIGHT_TO_LEFT">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+         <Button fx:id="closeWindowBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="145.0" text="Close" />
+      </HBox>
+   </VBox>
+   <Label fx:id="userSessionId" layoutX="466.0" layoutY="11.0" text="Session ID: XXXXX" textAlignment="RIGHT" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+</AnchorPane>
